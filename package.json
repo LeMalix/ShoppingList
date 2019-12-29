@@ -1,0 +1,38 @@
+{
+  "name": "shoppinglist",
+  "version": "1.0.0",
+  "description": "Simple app in MERN for a shopping list",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Le-MaliX/ShoppingList.git"
+  },
+  "keywords": [
+    "MERN"
+  ],
+  "author": "Le Malix",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Le-MaliX/ShoppingList/issues"
+  },
+  "homepage": "https://github.com/Le-MaliX/ShoppingList#readme",
+  "dependencies": {
+    "concurrently": "^5.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.3"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "nodemon": "^2.0.2"
+  }
+}
