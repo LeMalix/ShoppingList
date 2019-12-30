@@ -11,7 +11,6 @@ import {
 } from 'reactstrap';
 
 class AppNavbar extends Component {
-  // eslint-disable-next-line react/state-in-constructor
   state = {
     isOpen: false,
   };
