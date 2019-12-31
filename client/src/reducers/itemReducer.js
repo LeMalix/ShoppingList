@@ -1,14 +1,13 @@
-import uuid from 'uuid';
-import { GET_ITEMS, ADD_ITEMS, DELETE_ITEMS } from '../actions/types';
+import {
+  GET_ITEMS,
+  ADD_ITEM,
+  DELETE_ITEMS,
+  ITEMS_LOADING,
+} from '../actions/types';
 
 const initialState = {
-  items: [
-    { id: uuid(), name: 'Lorem' },
-    { id: uuid(), name: 'Ipsum' },
-    { id: uuid(), name: 'Dolor' },
-    { id: uuid(), name: 'Sit' },
-    { id: uuid(), name: 'Amet' },
-  ],
+  items: [],
+  loading: false,
 };
 
 export default function (state = initialState, action) {
@@ -16,18 +15,27 @@ export default function (state = initialState, action) {
     case GET_ITEMS:
       return {
         ...state,
+        items: action.payload,
+        loading: false,
       };
 
     case DELETE_ITEMS:
       return {
         ...state,
-        items: state.items.filter((item) => item.id !== action.payload),
+        // eslint-disable-next-line no-underscore-dangle
+        items: state.items.filter((item) => item._id !== action.payload),
       };
 
-    case ADD_ITEMS:
+    case ADD_ITEM:
       return {
         ...state,
         items: [action.payload, ...state.items],
+      };
+
+    case ITEMS_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
 
     default:

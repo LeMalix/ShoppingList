@@ -21,9 +21,9 @@ class ShoppingList extends Component {
     this.props.getItems();
   }
 
-  onDeleteClick = (id) => {
+  onDeleteClick = (_id) => {
     // eslint-disable-next-line react/destructuring-assignment
-    this.props.deleteItem(id);
+    this.props.deleteItem(_id);
   }
 
   render() {
@@ -31,14 +31,14 @@ class ShoppingList extends Component {
     return (
       <ListGroup>
         <TransitionGroup className="shopping-list">
-          {items.map(({ id, name }) => (
-            <CSSTransition key={id} timeout={500} classNames="fade">
+          {items.map(({ _id, name }) => (
+            <CSSTransition key={_id} timeout={500} classNames="fade">
               <ListGroupItem>
                 <Button
                   className="remove-btn"
                   color="danger"
                   size="sm"
-                  onClick={() => this.onDeleteClick(id)}
+                  onClick={() => this.onDeleteClick(_id)}
                 >
                   &times;
                 </Button>
@@ -58,7 +58,7 @@ ShoppingList.propTypes = {
   data: PropTypes.PropTypes.shape({
     items: PropTypes.PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        _id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
       }),
     ),
