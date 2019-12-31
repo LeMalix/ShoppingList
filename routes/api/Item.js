@@ -33,7 +33,7 @@ exports.post = async (req, res) => {
 // @access public 4 now
 exports.delete = async (req, res) => {
   try {
-    const deleteItem = await Item.findById(req.params.id).remove();
+    const deleteItem = await Item.findById(req.params.id).deleteOne();
     res.status(204).json({ success: true, deleteItem });
   } catch (error) {
     res.status(404).json({ success: false, error });
