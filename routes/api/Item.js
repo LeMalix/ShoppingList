@@ -15,7 +15,7 @@ exports.get = async (req, res) => {
 
 // @route POST /api/items
 // @desc Create an item
-// @access public 4 now
+// @access private
 exports.post = async (req, res) => {
   const item = new Item({
     name: req.body.name,
@@ -30,7 +30,7 @@ exports.post = async (req, res) => {
 
 // @route DELETE /api/items/:id
 // @desc Delete an item
-// @access public 4 now
+// @access private
 exports.delete = async (req, res) => {
   try {
     const deleteItem = await Item.findById(req.params.id).deleteOne();
