@@ -10,16 +10,16 @@ exports.post = async (req, res) => {
 
   // Simple validation
   if (!email || !password) {
-    return res.status(400).json({ msg: 'Please enter all fields' });
+    return res.status(400).send('Please enter all fields');
   }
 
   // Check for existing user
   const user = await User.findOne({ email });
-  if (!user) return res.status(400).json({ msg: 'User not exists exists' });
+  if (!user) return res.status(400).send('User not exists exists');
 
   // Compare passwords
   const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
+  if (!isMatch) return res.status(400).send('Invalid credentials');
 
   // Create salt and Hash
   const { _id } = user;

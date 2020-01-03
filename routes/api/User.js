@@ -10,12 +10,12 @@ exports.post = async (req, res) => {
 
   // Simple validation
   if (!name || !email || !password) {
-    return res.status(400).json({ msg: 'Please enter all fields' });
+    return res.status(400).send('Please enter all fields');
   }
 
   // Check for existing user
   const user = await User.findOne({ email });
-  if (user) return res.status(400).json({ msg: 'User already exists' });
+  if (user) return res.status(400).send('User already exists');
 
   const newUser = new User({ name, email, password });
 
