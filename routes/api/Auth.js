@@ -26,8 +26,10 @@ exports.post = async (req, res) => {
   const token = await jwt.sign({ id: _id }, process.env.JWTSECRET, { expiresIn: 3600 });
   return res.json({
     token,
-    name: user.name,
-    email: user.email,
+    user: {
+      name: user.name,
+      email: user.email,
+    },
   });
 };
 

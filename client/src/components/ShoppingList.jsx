@@ -27,21 +27,23 @@ class ShoppingList extends Component {
   }
 
   render() {
-    const { data: { items } } = this.props;
+    const { isAuthenticated, data: { items } } = this.props;
     return (
       <ListGroup>
         <TransitionGroup className="shopping-list">
           {items.map(({ _id, name }) => (
             <CSSTransition key={_id} timeout={500} classNames="fade">
               <ListGroupItem>
-                <Button
-                  className="remove-btn"
-                  color="danger"
-                  size="sm"
-                  onClick={() => this.onDeleteClick(_id)}
-                >
-                  &times;
-                </Button>
+                { isAuthenticated ? (
+                  <Button
+                    className="remove-btn"
+                    color="danger"
+                    size="sm"
+                    onClick={() => this.onDeleteClick(_id)}
+                  >
+                    &times;
+                  </Button>
+                ) : null }
                 {name}
               </ListGroupItem>
             </CSSTransition>
@@ -63,10 +65,12 @@ ShoppingList.propTypes = {
       }),
     ),
   }).isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   data: state.data,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(
